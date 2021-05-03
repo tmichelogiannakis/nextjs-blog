@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Hero from '../components/Hero';
+import Hero from '../components/home-page/Hero';
 
 const HomePage: NextPage = () => {
   return (

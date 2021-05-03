@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import '../../styles/globals.css';
+import Layout from '../components/layout/Layout';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
@@ -15,7 +16,9 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         />
         <title>Nextjs Blog</title>
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 };
