@@ -1,11 +1,11 @@
 import PostGridItem from './PostGridItem';
 import Post from '../../types/post';
 
-type PostsGridProps = {
+type PostGridProps = {
   posts: Post[];
 };
 
-const PostsGrid = ({ posts }: PostsGridProps): JSX.Element => {
+const PostGrid = ({ posts }: PostGridProps): JSX.Element => {
   return (
     <ul className="m-0 p-0 list-none grid grid-cols-post-grid gap-6">
       {posts.map(post => (
@@ -15,4 +15,4 @@ const PostsGrid = ({ posts }: PostsGridProps): JSX.Element => {
   );
 };
 
-export default PostsGrid;
+export default PostGrid;

@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
-import PostsGrid from '../components/posts/PostsGrid';
+import PostGrid from '../components/posts/PostGrid';
 import Post from '../types/post';
 import { getFeaturedPosts } from '../utils/posts';
 
@@ -30,7 +30,7 @@ const HomePage: NextPage<HomePageProps> = ({ posts }) => {
         <h2 className="text-3xl md:text-6xl text-gray-800 text-center">
           Featured Posts
         </h2>
-        <PostsGrid posts={posts} />
+        <PostGrid posts={posts} />
       </section>
     </>
   );

@@ -26,10 +26,10 @@ const PostItem = ({ post }: PostItemProps): JSX.Element => {
               width={300}
               height={200}
               layout="responsive"
-              className="post-image"
+              className="post-grid-item-image"
             />
             <style jsx global>{`
-              .post-image {
+              .post-grid-item-image {
                 object-fit: cover;
               }
             `}</style>
