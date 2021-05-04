@@ -4,6 +4,7 @@ type Post = {
   image: string;
   excerpt: string;
   date: string;
+  isFeatured?: boolean;
 };
 
 export default Post;

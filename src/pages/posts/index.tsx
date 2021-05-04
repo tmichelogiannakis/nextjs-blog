@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import AllPosts from '../components/posts/AllPosts';
+import PostsGrid from '../../components/posts/PostsGrid';
 
 const DUMMY_POSTS = [
   {
@@ -37,7 +37,14 @@ const DUMMY_POSTS = [
 ];
 
 const PostsPage: NextPage = () => {
-  return <AllPosts posts={DUMMY_POSTS} />;
+  return (
+    <section className="w-4/5 max-w-5xl my-8 mx-auto">
+      <h1 className="text-3xl md:text-6xl text-center text-gray-800">
+        All Posts
+      </h1>
+      <PostsGrid posts={DUMMY_POSTS} />
+    </section>
+  );
 };
 
 export default PostsPage;

@@ -17,7 +17,7 @@ const MenuItem: FC<MenuItemProps> = ({ href, children }) => {
   );
 };
 
-const MainNavigation = () => {
+const MainNavigation = (): JSX.Element => {
   return (
     <header className="w-full h-24 bg-gray-900 flex justify-between items-center px-4">
       <Link href="/">
