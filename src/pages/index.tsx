@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import PostGrid from '../components/posts/PostGrid';
 import Post from '../types/post';
@@ -11,6 +12,13 @@ type HomePageProps = {
 const HomePage: NextPage<HomePageProps> = ({ posts }) => {
   return (
     <>
+      <Head>
+        <title>John&#39;s Blog</title>
+        <meta
+          name="description"
+          content="I post about programming and web development."
+        />
+      </Head>
       <section className="bg-gradient-to-b from-gray-900 to-gray-800 text-center py-8">
         <div className="w-80 h-80 shadow rounded-full overflow-hidden bg-gray-700 m-auto">
           <Image

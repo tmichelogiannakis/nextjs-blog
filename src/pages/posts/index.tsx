@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import PostGrid from '../../components/posts/PostGrid';
 import Post from '../../types/post';
 import { getAllPosts } from '../../utils/posts';
@@ -9,12 +10,21 @@ type PostsPageProps = {
 
 const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
   return (
-    <section className="w-4/5 max-w-5xl my-8 mx-auto">
-      <h1 className="text-3xl md:text-6xl text-center text-gray-800">
-        All Posts
-      </h1>
-      <PostGrid posts={posts} />
-    </section>
+    <>
+      <Head>
+        <title>All Posts</title>
+        <meta
+          name="description"
+          content="A list of all programming-related tutorials and posts!"
+        />
+      </Head>
+      <section className="w-4/5 max-w-5xl my-8 mx-auto">
+        <h1 className="text-3xl md:text-6xl text-center text-gray-800">
+          All Posts
+        </h1>
+        <PostGrid posts={posts} />
+      </section>
+    </>
   );
 };
 
