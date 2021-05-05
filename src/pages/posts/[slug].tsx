@@ -2,6 +2,14 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+import {
+  NormalComponents,
+  ReactBaseProps,
+  ReactMarkdownProps,
+  SpecialComponents
+} from 'react-markdown/src/ast-to-react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { getPostsFiles, getPostData } from '../../utils/posts';
 import Post from '../../types/post';
 
@@ -10,6 +18,45 @@ type PostDetailsPageProps = {
 };
 
 const PostDetailPage: NextPage<PostDetailsPageProps> = ({ post }) => {
+  const components: Partial<NormalComponents & SpecialComponents> = {
+    p(paragraph) {
+      const { node } = paragraph;
+
+      if (node.children[0].tagName === 'img') {
+        const image = node.children[0];
+        const properties = image.properties as { src: string; alt: string };
+        return (
+          <div className="w-full max-w-xs my-4 mx-auto">
+            <Image
+              src={`/images/posts/${post.slug}/${properties.src}`}
+              alt={properties.alt}
+              width={600}
+              height={300}
+            />
+          </div>
+        );
+      }
+
+      return <p className="text-gray-800">{paragraph.children}</p>;
+    },
+
+    code(
+      code: ReactBaseProps &
+        ReactMarkdownProps & {
+          inline?: boolean | undefined;
+          className?: string | undefined;
+        }
+    ) {
+      const { className, children } = code;
+      const language = className?.split('-')[1]; // className is something like language-js => We need the "js" part here
+      return (
+        <SyntaxHighlighter style={atomDark} language={language}>
+          {children}
+        </SyntaxHighlighter>
+      );
+    }
+  };
+
   return (
     <>
       <Head>
@@ -22,21 +69,21 @@ const PostDetailPage: NextPage<PostDetailsPageProps> = ({ post }) => {
             {post.title}
           </h1>
           <Image
-            className="post-image"
+            className="post-main-image"
             src={`/images/posts/${post.slug}/${post.image}`}
             alt={post.title}
             width={200}
             height={150}
           />
           <style jsx global>{`
-            .post-image {
+            .post-main-image {
               object-fit: cover;
               width: 200px;
               height: 120px;
             }
           `}</style>
         </header>
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        <ReactMarkdown components={components}>{post.content}</ReactMarkdown>
       </article>
     </>
   );
