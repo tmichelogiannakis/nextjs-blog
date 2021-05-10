@@ -19,7 +19,7 @@ const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
         />
       </Head>
       <section className="w-4/5 max-w-5xl my-8 mx-auto">
-        <h1 className="text-3xl md:text-6xl text-center text-gray-800">
+        <h1 className="my-4 text-3xl md:text-6xl text-center text-gray-800">
           All Posts
         </h1>
         <PostGrid posts={posts} />

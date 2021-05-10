@@ -4,6 +4,9 @@ module.exports = {
   purge: ['./src/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ['Roboto', 'sans-serif']
+    },
     colors: {
       ...colors,
       primary: {
@@ -16,6 +19,13 @@ module.exports = {
         600: '#480264',
         700: '#3d0264'
       }
+    },
+    minWidth: {
+      0: 0,
+      40: '10mre',
+      full: '100%',
+      min: 'min-content',
+      max: 'max-content'
     },
     extend: {
       gridTemplateColumns: {

@@ -35,7 +35,7 @@ const HomePage: NextPage<HomePageProps> = ({ posts }) => {
         </p>
       </section>
       <section className="w-9/12 max-w-7xl m-auto my-8">
-        <h2 className="text-3xl md:text-6xl text-gray-800 text-center">
+        <h2 className="my-4 text-3xl md:text-6xl text-gray-800 text-center">
           Featured Posts
         </h2>
         <PostGrid posts={posts} />
