@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import ContactFormSchemaType, {
@@ -10,6 +11,7 @@ import Label from '../components/ui/Label';
 import Input from '../components/ui/Input';
 import Textarea from '../components/ui/Textarea';
 import Button from '../components/ui/Button';
+import Notification, { NotificationProps } from '../components/ui/Notification';
 
 const ContactPage: NextPage = () => {
   const {
@@ -21,7 +23,11 @@ const ContactPage: NextPage = () => {
     resolver: yupResolver(contactFormSchema)
   });
 
+  const [notification, setNotification] =
+    useState<NotificationProps | undefined>(undefined);
+
   const onSubmit = handleSubmit(async ({ email, name, message }) => {
+    setNotification({ message: 'Sending message...' });
     fetch('/api/contact', {
       method: 'POST',
       body: JSON.stringify({ email, name, message }),
@@ -31,7 +37,9 @@ const ContactPage: NextPage = () => {
     })
       .then(response => {
         if (response.ok) {
-          return response.json(); // .then(console.log);
+          return response.json().then(({ message }) => {
+            setNotification({ severity: 'success', message });
+          });
         }
         if (response.status === 500) {
           throw new Error('Something went wrong!');
@@ -40,8 +48,8 @@ const ContactPage: NextPage = () => {
           throw new Error(data.message || 'Something went wrong!');
         });
       })
-      .catch(_error => {
-        // console.log(error);
+      .catch(error => {
+        setNotification({ severity: 'error', message: error.message });
       })
       .finally(() => {
         reset();
@@ -89,6 +97,7 @@ const ContactPage: NextPage = () => {
           </div>
         </form>
       </section>
+      {notification && <Notification {...notification} />}
     </>
   );
 };

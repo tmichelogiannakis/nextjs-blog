@@ -18,7 +18,9 @@ module.exports = {
         500: '#5a097a',
         600: '#480264',
         700: '#3d0264'
-      }
+      },
+      success: { ...colors.green },
+      error: { ...colors.red }
     },
     minWidth: {
       0: 0,
