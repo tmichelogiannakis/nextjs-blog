@@ -12,7 +12,7 @@ const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>All Posts</title>
+        <title>John&#39;s Blog - Posts</title>
         <meta
           name="description"
           content="A list of all programming-related tutorials and posts!"

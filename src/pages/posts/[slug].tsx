@@ -60,7 +60,7 @@ const PostDetailPage: NextPage<PostDetailsPageProps> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <title>John&#39;s Blog - {post.title}</title>
         <meta name="description" content={post.excerpt} />
       </Head>
       <article className="w-11/12 max-w-5xl text-xl leading-8 bg-gray-100 rounded-md my-8 mx-auto p-4 md:p-8">

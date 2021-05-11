@@ -51,7 +51,7 @@ const ContactPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Contact Me</title>
+        <title>John&#39;s Blog - Contact Me</title>
         <meta name="description" content="Send me your messages!" />
       </Head>
       <section className="my-8 mx-auto rounded-md bg-gray-100 w-11/12 max-w-3xl p-4 shadow text-2xl">
