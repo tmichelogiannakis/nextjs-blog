@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-500;
+    @apply text-gray-900;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
